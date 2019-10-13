@@ -1,4 +1,19 @@
 {
+    "name": "serbayacar/http-rest-client",
+    "description": "Easy to use Oauth2 Client library for everyone",
+    "version": "0.3.0",
+    "type": "library",
+    "keywords": ["http", "https", "oauth", "autherization", "provider", "auth", "client"],
+    "authors": [
+        {
+            "name": "Serbay ACAR",
+            "email": "serbayacar@gmail.com",
+            "role": "Full-Stack Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
     "require-dev": {
         "phpunit/phpunit": "^7"
     }
