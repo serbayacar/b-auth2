@@ -1,5 +1,5 @@
 {
-    "name": "serbayacar/http-rest-client",
+    "name": "serbayacar/b-auth2",
     "description": "Easy to use Oauth2 Client library for everyone",
     "version": "0.3.0",
     "type": "library",
