@@ -4,7 +4,7 @@ namespace providers;
 use \interfaces\Oauth2Interface;
 use \client\HTTPClient;
 
-class GenericProvider implements Oauth2Interface {
+class HubSpot implements Oauth2Interface {
 
     private $clients;
 
@@ -40,17 +40,15 @@ class GenericProvider implements Oauth2Interface {
 
     public function getAuthenticationURL(){
         $query = ['client_id' => $this->clients['client_id'],
-                  'redirect_uri' => $this->redirectURL ,
-                  'response_type' => 'code' ,
-                  'scopes' => implode(',',$this->scopes),
-                  'access_type' => 'offline'
+                 'scope' => implode(',',$this->scopes),
+                 'redirect_uri' => $this->redirectURL 
                  ];
 
         return $this->authURL . '?' . http_build_query($query);
     }
 
-    public function getAccessToken( string $code){
-        $query = ['grant_type' => 'autherization_code' ,
+    public function getAccessToken($code){
+        $query = ['grant_type' => 'authorization_code' ,
                   'client_id' => $this->clients['client_id'],
                   'client_secret' => $this->clients['client_secret'],
                   'redirect_uri' => $this->redirectURL,
@@ -59,7 +57,9 @@ class GenericProvider implements Oauth2Interface {
 
         $client = $this->getHTTPClient();
         $request = $client->post($this->tokenURL . '?' . http_build_query($query));
-        return $request;
+
+        $tokens = $request->getResponseBodyAsJson();
+        return $tokens;
     }
 
     public function getRefreshToken(){
@@ -67,6 +67,7 @@ class GenericProvider implements Oauth2Interface {
                    'refresh_token' => $this->clients['refreshToken'] ,
                    'client_id' => $this->clients['client_id'],
                    'client_secret' => $this->clients['client_secret'],
+                   'redirect_uri' => $this->redirectURL
                  ];
 
         $client = $this->getHTTPClient();

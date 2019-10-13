@@ -1,5 +1,7 @@
 <?php 
-include __DIR__ .'/../client/HTTPClient.php';
+
+namespace oauth2;
+use \interfaces\Oauth2Interface;
 
 class Oauth2Client{
 

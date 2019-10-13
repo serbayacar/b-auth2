@@ -1,10 +1,8 @@
 <?php
 
-namespace providers;
-use \interfaces\Oauth2Interface;
-use \client\HTTPClient;
+namespace interfaces;
 
-class GenericProvider implements Oauth2Interface {
+class ZohoCRM implements Oauth2Interface {
 
     private $clients;
 
@@ -26,7 +24,7 @@ class GenericProvider implements Oauth2Interface {
         return $this;
     }
 
-    public function setScopes( array $scopes ){
+    public function setScopes( $scopes ){
         $this->scopes = $scopes;
 
         return $this;
@@ -49,7 +47,7 @@ class GenericProvider implements Oauth2Interface {
         return $this->authURL . '?' . http_build_query($query);
     }
 
-    public function getAccessToken( string $code){
+    public function getAccessToken($code){
         $query = ['grant_type' => 'autherization_code' ,
                   'client_id' => $this->clients['client_id'],
                   'client_secret' => $this->clients['client_secret'],

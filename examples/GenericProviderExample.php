@@ -1,8 +1,7 @@
 <?php
-
-include __DIR__. '/../src/lib/classes/providers/GenericProvider.php';
-include __DIR__. '/../src/lib/classes/oauth2/Oauth2Client.php';
-
+include __DIR__. '/../src/lib/autoloader.php';
+use \providers\GenericProvider;
+use \oauth2\Oauth2Client;
 
 $interface = new GenericProvider();
 $interface->setClient(['client_id' => '##Your Client ID is here##', 
@@ -12,7 +11,6 @@ $interface->setURLs(['apiURL' => '##Provider api url comming is here##',
                            'tokenURL' => '##Provider auth token url comming is here##', 
                            'redirectURL' => '##Provider redirect uri comming is here##']);
 $interface->setScopes(['## If you need set scope, you write here ##']);
-
 
 $oauth = new Oauth2Client( $interface );
 
