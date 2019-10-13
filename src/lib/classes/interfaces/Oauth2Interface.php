@@ -1,14 +1,6 @@
 <?php
 
-// interface Oauth2Interface{
-
-//     public function getAuthenticationURL();
-//     public function auth();
-//     public function getAccessToken();
-//     public function refreshTokens();
-//     public function checkTokens();
-    
-// }
+namespace interfaces;
 
 interface Oauth2Interface{
 

@@ -1,7 +1,6 @@
 <?php
 
-include __DIR__ .'/../interfaces/Oauth2Interface.php';
-
+namespace interfaces;
 
 class ZohoCRM implements Oauth2Interface {
 

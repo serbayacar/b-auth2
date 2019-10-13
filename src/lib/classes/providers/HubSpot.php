@@ -1,7 +1,8 @@
 <?php
 
-include __DIR__ .'/../interfaces/Oauth2Interface.php';
-
+namespace providers;
+use \interfaces\Oauth2Interface;
+use \client\HTTPClient;
 
 class HubSpot implements Oauth2Interface {
 
